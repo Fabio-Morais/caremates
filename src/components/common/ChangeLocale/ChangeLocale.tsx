@@ -18,11 +18,9 @@ export const ChangeLocale = () => {
   const router = useRouter();
   const { locale: currentLocale } = router;
 
-  // Function to get flag based on locale
   const getFlag = (locale: string | undefined) =>
     locale === 'de' ? '🇩🇪' : '🇬🇧';
 
-  // Initialize with current locale's flag
   const [selectedCountry, setSelectedCountry] = useState(
     getFlag(currentLocale)
   );

@@ -1,11 +1,9 @@
-// pages/api/matching.ts
 import { findMatchingFacility } from './matching.service';
 import { MatchingRequestSchema } from './matchingRequest.dto';
 import { MatchingResponse } from './matchingResponse.dto';
 import { Hono } from 'hono';
 import { handle } from 'hono/vercel';
 
-// Add this export to specify Edge runtime
 export const config = {
   runtime: 'edge',
 };
@@ -25,17 +23,20 @@ app.post('/api/matching', async (c) => {
     );
   }
 
-  const { patientName, careType, zipCode } = result.data;
+  const { firstName, lastName, careType, zipCode } = result.data;
 
-  // Call your business logic
-  const matchResult: MatchingResponse = findMatchingFacility(careType, zipCode);
+  console.log(`Received request for ${firstName} ${lastName}`);
+
+  const matchResult: MatchingResponse = findMatchingFacility(
+    careType,
+    Number(zipCode)
+  );
 
   return c.json({
     status: matchResult.status,
     message: matchResult.message,
-    match: matchResult.matching,
+    match: matchResult.match,
   });
 });
 
-// Export the handler function for Next.js
 export default handle(app);

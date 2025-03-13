@@ -20,6 +20,7 @@ export const useMultiForm = ({ changeView }: Params) => {
 
   const [step, setStep] = useState(1);
 
+  // form validation
   const {
     register,
     handleSubmit,
@@ -34,10 +35,12 @@ export const useMultiForm = ({ changeView }: Params) => {
     },
   });
 
+  // go to the next step or submit the form
   const handleNext = async () => {
     if (step < 3 && watch('careType') !== 'dayCare') {
       setStep(step + 1);
     } else if (step === 3 || watch('careType') === 'dayCare') {
+      // this is the last step
       const careType = getValues('careType');
       const zipCode = getValues('zipCode');
 
@@ -51,10 +54,11 @@ export const useMultiForm = ({ changeView }: Params) => {
       };
       const response = await submitMatchingForm(object);
 
-      changeView('result', response);
+      changeView('result', response); // change the view to the result page
     }
   };
 
+  // go back to the previous step
   const handleBack = () => {
     if (step > 1) {
       setStep(step - 1);

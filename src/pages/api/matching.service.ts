@@ -10,7 +10,6 @@ export function findMatchingFacility(
 ): MatchingResponse {
   const noFacilityFoundResponse: MatchingResponse = {
     status: 404,
-    success: false,
     message: 'No match found.',
   };
 
@@ -44,9 +43,8 @@ export function findMatchingFacility(
 
   return {
     status: 200,
-    success: true,
     message: 'Match found.',
-    matching: {
+    match: {
       zipCode: matchedFacility.zipCode,
       type: matchedFacility.type,
       name: matchedFacility.name,

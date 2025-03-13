@@ -5,14 +5,12 @@ describe('findMatchingFacility', () => {
   it('should return a no match when no available facilities exist within the range', () => {
     const response: MatchingResponse = findMatchingFacility('stationary', 8000);
     expect(response.status).toBe(404);
-    expect(response.success).toBe(false);
     expect(response.message).toBe('No match found.');
   });
 
   it('should return a 404 response when careType is dayCare', () => {
     const response: MatchingResponse = findMatchingFacility('dayCare', 15000);
     expect(response.status).toBe(404);
-    expect(response.success).toBe(false);
     expect(response.message).toBe('No match found.');
   });
 
@@ -22,7 +20,6 @@ describe('findMatchingFacility', () => {
       50000
     );
     expect(response.status).toBe(404);
-    expect(response.success).toBe(false);
     expect(response.message).toBe('No match found.');
   });
 
@@ -32,7 +29,6 @@ describe('findMatchingFacility', () => {
       12000
     );
     expect(response.status).toBe(404);
-    expect(response.success).toBe(false);
     expect(response.message).toBe('No match found.');
   });
 
@@ -42,7 +38,6 @@ describe('findMatchingFacility', () => {
       23000
     );
     expect(response.status).toBe(404);
-    expect(response.success).toBe(false);
     expect(response.message).toBe('No match found.');
   });
 
@@ -52,7 +47,6 @@ describe('findMatchingFacility', () => {
       29000
     );
     expect(response.status).toBe(404);
-    expect(response.success).toBe(false);
     expect(response.message).toBe('No match found.');
   });
 
@@ -62,9 +56,8 @@ describe('findMatchingFacility', () => {
       16000
     );
     expect(response.status).toBe(200);
-    expect(response.success).toBe(true);
     expect(response.message).toBe('Match found.');
-    expect(response.matching).toEqual({
+    expect(response.match).toEqual({
       zipCode: 17000,
       type: ['stationary'],
       name: 'B',
@@ -78,9 +71,8 @@ describe('findMatchingFacility', () => {
       25000
     );
     expect(response.status).toBe(200);
-    expect(response.success).toBe(true);
     expect(response.message).toBe('Match found.');
-    expect(response.matching).toEqual({
+    expect(response.match).toEqual({
       zipCode: 27000,
       type: ['ambulatory'],
       name: 'D',
@@ -94,9 +86,8 @@ describe('findMatchingFacility', () => {
       19000
     );
     expect(response.status).toBe(200);
-    expect(response.success).toBe(true);
     expect(response.message).toBe('Match found.');
-    expect(response.matching).toEqual({
+    expect(response.match).toEqual({
       zipCode: 18000,
       type: ['stationary', 'ambulatory'],
       name: 'E',
@@ -110,9 +101,8 @@ describe('findMatchingFacility', () => {
       18000
     );
     expect(response.status).toBe(200);
-    expect(response.success).toBe(true);
     expect(response.message).toBe('Match found.');
-    expect(response.matching).toEqual({
+    expect(response.match).toEqual({
       zipCode: 18000,
       type: ['stationary', 'ambulatory'],
       name: 'E',
@@ -126,9 +116,8 @@ describe('findMatchingFacility', () => {
       18000
     );
     expect(response.status).toBe(200);
-    expect(response.success).toBe(true);
     expect(response.message).toBe('Match found.');
-    expect(response.matching).toEqual({
+    expect(response.match).toEqual({
       zipCode: 18000,
       type: ['stationary', 'ambulatory'],
       name: 'E',
@@ -142,9 +131,8 @@ describe('findMatchingFacility', () => {
       17000
     );
     expect(response.status).toBe(200);
-    expect(response.success).toBe(true);
     expect(response.message).toBe('Match found.');
-    expect(response.matching).toEqual({
+    expect(response.match).toEqual({
       zipCode: 17000,
       type: ['stationary'],
       name: 'B',

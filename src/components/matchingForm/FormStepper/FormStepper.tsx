@@ -38,62 +38,55 @@ export const FormStepper = ({ activeStep, careType }: Props) => {
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      width="100%"
+    <Stepper
+      index={activeStep}
+      orientation={isMobile ? 'vertical' : 'horizontal'}
+      width={isMobile ? '100%' : 'auto'}
     >
-      <Stepper
-        index={activeStep}
-        orientation={isMobile ? 'vertical' : 'horizontal'}
-        width={isMobile ? '100%' : 'auto'}
-      >
-        {steps.map((step, index) => (
-          <Tooltip
-            label={step.disabled ? t('Form.step1.tooltip') : ''}
-            hasArrow
-            placement="top"
-            key={index}
-          >
-            <Step>
-              <StepIndicator opacity={step.disabled ? 0.3 : 1}>
-                <StepStatus
-                  complete={<StepIcon />}
-                  incomplete={<StepNumber />}
-                  active={<StepNumber />}
-                />
-              </StepIndicator>
+      {steps.map((step, index) => (
+        <Tooltip
+          label={step.disabled ? t('Form.step1.tooltip') : ''}
+          hasArrow
+          placement="top"
+          key={index}
+        >
+          <Step>
+            <StepIndicator opacity={step.disabled ? 0.3 : 1}>
+              <StepStatus
+                complete={<StepIcon />}
+                incomplete={<StepNumber />}
+                active={<StepNumber />}
+              />
+            </StepIndicator>
 
-              <Box flexShrink="0">
-                <StepTitle
-                  fontSize={{ base: 'sm', md: 'md' }}
+            <Box flexShrink="0">
+              <StepTitle
+                fontSize={{ base: 'sm', md: 'md' }}
+                color={step.disabled ? 'gray.400' : undefined}
+                whiteSpace="nowrap"
+                overflow="hidden"
+                textOverflow="ellipsis"
+              >
+                {step.title}
+              </StepTitle>
+              {!isMobile && (
+                <StepDescription
+                  fontSize={{ base: 'xs', md: 'sm' }}
                   color={step.disabled ? 'gray.400' : undefined}
-                  whiteSpace="nowrap"
                   overflow="hidden"
                   textOverflow="ellipsis"
+                  whiteSpace="normal"
+                  maxWidth="240px"
                 >
-                  {step.title}
-                </StepTitle>
-                {!isMobile && (
-                  <StepDescription
-                    fontSize={{ base: 'xs', md: 'sm' }}
-                    color={step.disabled ? 'gray.400' : undefined}
-                    overflow="hidden"
-                    textOverflow="ellipsis"
-                    whiteSpace="normal"
-                    maxWidth="200px"
-                  >
-                    {step.description}
-                  </StepDescription>
-                )}
-              </Box>
+                  {step.description}
+                </StepDescription>
+              )}
+            </Box>
 
-              {!isMobile && <StepSeparator />}
-            </Step>
-          </Tooltip>
-        ))}
-      </Stepper>
-    </Box>
+            {!isMobile && <StepSeparator />}
+          </Step>
+        </Tooltip>
+      ))}
+    </Stepper>
   );
 };

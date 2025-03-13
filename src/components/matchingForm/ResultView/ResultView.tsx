@@ -18,7 +18,7 @@ export const ResultView = ({ viewState, handleGoBackForm }: Params) => {
       borderWidth="1px"
       rounded="lg"
       shadow="1px 1px 3px rgba(0,0,0,0.3)"
-      maxWidth={800}
+      maxWidth={1000}
       p={8}
       m="10px auto"
       pr={12}

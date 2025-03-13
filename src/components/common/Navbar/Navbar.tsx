@@ -18,7 +18,7 @@ export const Navbar = () => {
       >
         {/* Logo */}
         <Flex flex={1} justify="start">
-          <Image src="/carematesLogo.png" alt="Caremates Logo" h="40px" />
+          <Image src="/CareMatesLogo.png" alt="Caremates Logo" h="40px" />
         </Flex>
 
         {/* Button */}

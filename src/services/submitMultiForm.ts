@@ -1,5 +1,10 @@
 import { MatchingRequest } from '@/pages/api/matchingRequest.dto';
 
+/**
+ * Submit the matching form data to the server
+ * @param formData The matching form data
+ * @returns The response from the server
+ */
 export const submitMatchingForm = async (formData: MatchingRequest) => {
   try {
     const response = await fetch('/api/matching', {
