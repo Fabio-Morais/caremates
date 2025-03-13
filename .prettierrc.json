@@ -1,0 +1,29 @@
+{
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 80,
+    "bracketSpacing": true,
+    "plugins": [
+        "@trivago/prettier-plugin-sort-imports"
+    ],
+    "importOrder": [
+        "./components/",
+        "^@core/(.*)$",
+        "next-i18next",
+        "next/",
+        "nextjs/",
+        "@chakra-ui/",
+        "react*",
+        "@/pages/",
+        "@/components/",
+        "@/styles/",
+        "@/interfaces/",
+        "@/store/",
+        "@/hooks/",
+        "@/"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
+}

@@ -1,0 +1,57 @@
+{
+    "Form": {
+        "step1":{
+            "title": "Patient Name",
+            "description": "Enter first and last name",
+            "firstName": "First Name",
+            "lastName": "Last Name",
+
+            "firstNameError": "First Name is required",
+            "lastNameError": "Last Name is required"
+        },
+        "step2":{
+            "title": "Care Type",
+            "description": "Select type of care needed",
+            "typeOfCare": "Type of Care Needed",
+            "stationary": "Stationary",
+            "dayCare": "Day Care",
+            "ambulatory": "Ambulatory",
+
+            "error":" 'Please select a type of care'"
+        },
+        "step3":{
+            "title": "Zip Code",
+            "description": "Enter patient’s zip code",
+
+            "error": "Zip code is required for stationary or ambulatory care types"
+        },
+
+        "tooltip": "Don't need to complete for the day Care",
+
+        "next": "Next",
+        "back": "Back",
+        "submit": "Submit"
+    },
+    "Results":{
+        "notFound":{
+            "title": "No match found",
+            "description": " Currently there are no available facilities that match your search criteria.",
+            "button":"Try again"
+        },
+        "found":{
+            "title": " Facility {name} found",
+            "description": "Located in your area and ready to provide the care you need.",
+            "checkLocation": "Check location",
+
+            "modal":{
+                "title": "Location Information",
+                "state": "State/Region:",
+                "zip": "Zip Code:",
+                "Country": "Country:",
+                "description": "The facility is located at {address}, {city}, {state}, {zip}.",
+                "button": "Close",
+                "googleMaps": "View on Google Maps"
+            }
+        }
+    }
+}

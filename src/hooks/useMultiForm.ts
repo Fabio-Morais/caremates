@@ -1,0 +1,74 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
+
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+
+import { CareType, MatchingRequest } from '@/pages/api/matchingRequest.dto';
+import { MatchingResponse } from '@/pages/api/matchingResponse.dto';
+
+import { submitMatchingForm } from '@/services/submitMultiForm';
+import { getFormSchema } from '@/types/FormValidation';
+import { View } from '@/types/ViewType';
+
+type Params = {
+  changeView: (view: View, object: MatchingResponse) => void;
+};
+
+export const useMultiForm = ({ changeView }: Params) => {
+  const t = useTranslations();
+
+  const [step, setStep] = useState(1);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    getValues,
+  } = useForm({
+    resolver: zodResolver(getFormSchema(step, t)),
+    mode: 'onSubmit',
+    defaultValues: {
+      careType: 'stationary',
+    },
+  });
+
+  const handleNext = async () => {
+    if (step < 3 && watch('careType') !== 'dayCare') {
+      setStep(step + 1);
+    } else if (step === 3 || watch('careType') === 'dayCare') {
+      const careType = getValues('careType');
+      const zipCode = getValues('zipCode');
+
+      if (!careType || !zipCode) return;
+
+      const object: MatchingRequest = {
+        careType: careType as CareType,
+        firstName: getValues('firstName'),
+        lastName: getValues('lastName'),
+        zipCode: getValues('zipCode') ?? '0',
+      };
+      const response = await submitMatchingForm(object);
+
+      changeView('result', response);
+    }
+  };
+
+  const handleBack = () => {
+    if (step > 1) {
+      setStep(step - 1);
+    }
+  };
+
+  return {
+    step,
+    setStep,
+    handleNext,
+    handleBack,
+    register,
+    handleSubmit,
+    errors,
+    watch,
+  };
+};

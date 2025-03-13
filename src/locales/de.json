@@ -1,0 +1,57 @@
+{
+    "Form": {
+        "step1": {
+            "title": "Patientenname",
+            "description": "Geben Sie Vor- und Nachnamen ein",
+            "firstName": "Vorname",
+            "lastName": "Nachname",
+
+            "firstNameError": "Vorname ist erforderlich",
+            "lastNameError": "Nachname ist erforderlich"
+        },
+        "step2": {
+            "title": "Pflegeart",
+            "description": "Wählen Sie die benötigte Pflegeart aus",
+            "typeOfCare": "Benötigte Pflegeart",
+            "stationary": "Stationäre Pflege",
+            "dayCare": "Tagespflege",
+            "ambulatory": "Ambulante Pflege",
+
+            "error": "Bitte wählen Sie eine Pflegeart aus"
+        },
+        "step3": {
+            "title": "Postleitzahl",
+            "description": "Geben Sie die Postleitzahl des Patienten ein",
+
+            "error": "Postleitzahl ist für stationäre oder ambulante Pflegearten erforderlich"
+        },
+
+        "tooltip": "Für die Tagespflege nicht erforderlich",
+
+        "next": "Weiter",
+        "back": "Zurück",
+        "submit": "Absenden"
+    },
+    "Results": {
+        "notFound": {
+            "title": "Keine Übereinstimmung gefunden",
+            "description": "Derzeit gibt es keine verfügbaren Einrichtungen, die Ihren Suchkriterien entsprechen.",
+            "button": "Erneut versuchen"
+        },
+        "found": {
+            "title": "Einrichtung {name} gefunden",
+            "description": "Befindet sich in Ihrer Nähe und ist bereit, die benötigte Pflege bereitzustellen.",
+            "checkLocation": "Standort überprüfen",
+
+            "modal": {
+                "title": "Standortinformationen",
+                "state": "Bundesland/Region:",
+                "zip": "Postleitzahl:",
+                "Country": "Land:",
+                "description": "Die Einrichtung befindet sich unter {address}, {city}, {state}, {zip}.",
+                "button": "Schließen",
+                "googleMaps": "Auf Google Maps ansehen"
+            }
+        }
+    }
+}
