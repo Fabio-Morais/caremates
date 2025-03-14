@@ -29,8 +29,8 @@ export const Step2 = ({ register, errors }: Params) => {
         {...register('careType')} // Register the field and validate on blur
       >
         <option value="stationary">{t('Form.step2.stationary')}</option>
-        <option value="ambulatory">{t('Form.step2.dayCare')}</option>
-        <option value="dayCare">{t('Form.step2.ambulatory')}</option>
+        <option value="ambulatory">{t('Form.step2.ambulatory')}</option>
+        <option value="dayCare">{t('Form.step2.dayCare')}</option>
       </Select>
       <FormErrorMessage>
         {errors.careType && errors.careType.message}
