@@ -11,7 +11,13 @@ export const config = {
 const app = new Hono();
 
 app.post('/api/matching', async (c) => {
-  const body = await c.req.json();
+  let body;
+
+  try {
+    body = await c.req.json();
+  } catch {
+    return c.json({ message: 'Invalid JSON format' }, 400);
+  }
 
   // Validate the request body against the schema
   const result = MatchingRequestSchema.safeParse(body);

@@ -12,7 +12,6 @@ type Params = {
 };
 
 export const ResultView = ({ viewState, handleGoBackForm }: Params) => {
-  console.log(viewState.result?.status);
   return (
     <Box
       borderWidth="1px"

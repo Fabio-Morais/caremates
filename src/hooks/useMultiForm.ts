@@ -42,15 +42,14 @@ export const useMultiForm = ({ changeView }: Params) => {
     } else if (step === 3 || watch('careType') === 'dayCare') {
       // this is the last step
       const careType = getValues('careType');
-      const zipCode = getValues('zipCode');
 
-      if (!careType || !zipCode) return;
+      if (!careType) return;
 
       const object: MatchingRequest = {
         careType: careType as CareType,
         firstName: getValues('firstName'),
         lastName: getValues('lastName'),
-        zipCode: getValues('zipCode') ?? '0',
+        zipCode: getValues('zipCode') ?? undefined,
       };
       const response = await submitMatchingForm(object);
 

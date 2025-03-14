@@ -45,7 +45,7 @@ export const FormStepper = ({ activeStep, careType }: Props) => {
     >
       {steps.map((step, index) => (
         <Tooltip
-          label={step.disabled ? t('Form.step1.tooltip') : ''}
+          label={step.disabled ? t('Form.tooltip') : ''}
           hasArrow
           placement="top"
           key={index}
