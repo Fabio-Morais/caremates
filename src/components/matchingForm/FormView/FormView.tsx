@@ -37,8 +37,11 @@ export const FormView = ({
   errors,
 }: FormViewProps) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
-    if (e.key === 'Enter' && Object.keys(errors).length === 0) {
-      handleNext();
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (Object.keys(errors).length === 0) {
+        handleSubmit(handleNext)();
+      }
     }
   };
 
